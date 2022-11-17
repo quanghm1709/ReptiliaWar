@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\Core\Character\CharacterCore.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterIdle.cs" />
     <Compile Include="Assets\Scripts\Core\Character\MeleeCharacter.cs" />
+    <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

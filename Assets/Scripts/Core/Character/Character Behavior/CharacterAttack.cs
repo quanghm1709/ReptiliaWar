@@ -15,6 +15,7 @@ public class CharacterAttack : State
         if (_agent.Detect())
         {
             _agent.rb.velocity = Vector3.zero;
+            _agent.navMeshAgent.speed = 0;
             if (_agent.timeBtwHitCD <= 0)
             {
                 Collider[] hitColliders = Physics.OverlapSphere(_agent.hitPoint.position, _agent.range);

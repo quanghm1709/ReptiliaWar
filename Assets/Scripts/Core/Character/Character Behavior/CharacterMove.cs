@@ -17,6 +17,7 @@ public class CharacterMove : State
 
         if (!_agent.Detect() && _agent.canMove)
         {
+            _agent.navMeshAgent.speed = _agent.speed;
             /*if (!_agent.isOwner)
             {
                 tower = GameObject.Find("My Tower").GetComponent<TowerController>();              
@@ -25,7 +26,7 @@ public class CharacterMove : State
             {
                 tower = GameObject.Find("Enemy Tower").GetComponent<TowerController>();        
             }*/
-           // _agent.movePos = tower.enemyPoint;
+            // _agent.movePos = tower.enemyPoint;
             _agent.navMeshAgent.destination = _agent.movePos.position;
             _agent.anim.SetBool("IsAttack", false);
             _agent.anim.SetFloat("Move", 1);
