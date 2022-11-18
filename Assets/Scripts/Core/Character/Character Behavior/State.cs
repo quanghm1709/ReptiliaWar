@@ -20,10 +20,7 @@ public abstract class State : MonoBehaviour
         _agent = character;
     }
     public abstract CharacterState GetState();
-    public virtual IEnumerator Action()
-    {
-        yield break;
-    }
+    public virtual void Action() { }
 
 }
 

@@ -8,7 +8,7 @@ public class CharacterAttack : State
     {
         return CharacterState.Attack;
     }
-    public override IEnumerator Action()
+    public override void Action()
     {
         base.Action();
         
@@ -16,12 +16,12 @@ public class CharacterAttack : State
         {
             _agent.rb.velocity = Vector3.zero;
             _agent.navMeshAgent.speed = 0;
+
             if (_agent.timeBtwHitCD <= 0)
             {
-                Collider[] hitColliders = Physics.OverlapSphere(_agent.hitPoint.position, _agent.range);
+                Collider[] hitColliders = Physics.OverlapSphere(_agent.hitPoint.position, _agent.range, _agent.detectLayer);
                 _agent.anim.SetBool("IsAttack", true);
                 _agent.anim.SetFloat("Move", 0);
-
                 if (_agent.isOwner)
                 {
                     foreach (Collider enemy in hitColliders)
@@ -29,15 +29,7 @@ public class CharacterAttack : State
                         if (!enemy.gameObject.GetComponent<Core>().isOwner)
                         {
                             enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
-                           // enemy.gameObject.GetComponent<TowerController>().ChangeState(TowerState.GetDamage);
-                        }
-                        else if (enemy.tag == "Player")
-                        {
-                            _agent.canMove = false;
-                        }
-                        else
-                        {
-                            _agent.canMove = true;
+                            enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
                         }
                     }
                 }
@@ -48,7 +40,7 @@ public class CharacterAttack : State
                         if (enemy.gameObject.GetComponent<Core>().isOwner)
                         {
                             enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
-                            //enemy.gameObject.GetComponent<Core>().ChangeState(CharacterState.GetDamage);
+                            enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
                         }
                     }
                 }
@@ -65,6 +57,5 @@ public class CharacterAttack : State
         {
             _agent.ChangeState(CharacterState.Moving);
         }
-        yield break;
     }
 }

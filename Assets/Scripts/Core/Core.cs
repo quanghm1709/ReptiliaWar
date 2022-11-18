@@ -30,6 +30,7 @@ public abstract class Core : MonoBehaviour
     {
         currentHp = maxHp;
         currentAtk = maxAtk;
+
     }
 
     public virtual bool Detect()
@@ -39,6 +40,10 @@ public abstract class Core : MonoBehaviour
     public virtual Transform ClosetEnemy()
     {
         return detect.GetClosetEnemy(detectRange, detectLayer);
+    }
+    public virtual Transform ClosetBuilding()
+    {
+        return detect.GetClosetBuilding(isOwner);
     }
     public virtual void SetTotalDamageToGet(int damage)
     {

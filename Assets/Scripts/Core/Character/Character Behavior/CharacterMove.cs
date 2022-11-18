@@ -9,24 +9,25 @@ public class CharacterMove : State
     {
         return CharacterState.Moving;
     }
-    public override IEnumerator Action()
+    public override void Action()
     {
         base.Action();
+        Transform direction = _agent.detect.GetClosetEnemy(_agent.detectRange, _agent.detectLayer);
+        Transform tower = _agent.detect.GetClosetBuilding(_agent.isOwner);
 
-        //TowerController tower;
+        if (direction != null)
+        {
+            _agent.movePos = direction;
+        }
+        else
+        {
+            _agent.movePos = tower.transform;
+        }
+
 
         if (!_agent.Detect() && _agent.canMove)
         {
             _agent.navMeshAgent.speed = _agent.speed;
-            /*if (!_agent.isOwner)
-            {
-                tower = GameObject.Find("My Tower").GetComponent<TowerController>();              
-            }
-            else
-            {
-                tower = GameObject.Find("Enemy Tower").GetComponent<TowerController>();        
-            }*/
-            // _agent.movePos = tower.enemyPoint;
             _agent.navMeshAgent.destination = _agent.movePos.position;
             _agent.anim.SetBool("IsAttack", false);
             _agent.anim.SetFloat("Move", 1);
@@ -35,6 +36,5 @@ public class CharacterMove : State
         {
             _agent.ChangeState(CharacterState.Attack);
         }
-        yield break;
     }
 }

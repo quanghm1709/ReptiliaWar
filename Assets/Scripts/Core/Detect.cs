@@ -43,4 +43,43 @@ public class Detect : MonoBehaviour
             return null;
         }     
     }
+
+    internal Transform GetClosetBuilding(bool isPayerOwner)
+    {
+        //isPayerOwner = this.GetComponent<Core>().isOwner;
+        GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
+        float closetDistance = Mathf.Infinity;
+        Transform closetBuilding = null;
+
+        List<GameObject> targetBuilding = new List<GameObject>();
+        if (buildings.Length > 0)
+        {
+            foreach (GameObject enemyBuilding in buildings)
+            {
+                if (isPayerOwner && !enemyBuilding.GetComponent<Core>().isOwner)
+                {
+                    targetBuilding.Add(enemyBuilding);
+                    Debug.Log("? +" + targetBuilding.Count);
+                }           
+            }
+            
+        }
+        if (targetBuilding.Count > 0)
+        {
+            foreach(GameObject enemyBuilding in targetBuilding)
+            {
+                float currentDistance;
+                currentDistance = Vector3.Distance(transform.position, enemyBuilding.transform.position);
+                if (currentDistance < closetDistance && enemyBuilding.GetComponent<Core>().currentHp > 0)
+                {
+                        closetDistance = currentDistance;
+                        closetBuilding = enemyBuilding.transform;
+                }
+            }
+        }
+        //if(isPayerOwner)
+        
+        return closetBuilding;
+    }
+
 }
