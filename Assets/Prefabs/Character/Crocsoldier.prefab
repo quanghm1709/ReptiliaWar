@@ -106,12 +106,14 @@ MonoBehaviour:
   isOwner: 1
   canMove: 1
   isBuilding: 0
+  isRanger: 0
   currentHp: 0
   getDamage: 0
   currentAtk: 0
   characterSprite: {fileID: 3365408204103791544}
   detect: {fileID: 2482958113959124544}
-  detectRange: 3
+  detectRange: 7
+  attackRange: 3.5
   detectLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -128,6 +130,9 @@ MonoBehaviour:
   range: 1
   hitPoint: {fileID: 2482958114520838425}
   rangeRange: 0
+  enemyTarget: {fileID: 0}
+  firePoint: {fileID: 0}
+  bullet: {fileID: 0}
   states:
   - {fileID: 8942281202254698762, guid: e12bd2360f2222645b55e50a03ccf588, type: 3}
   - {fileID: 6620731229003612460, guid: a556848c3fbf724468743bfd03c9cc8d, type: 3}

@@ -11,6 +11,7 @@ public abstract class Core : MonoBehaviour
     [SerializeField] public bool isOwner;
     [SerializeField] public bool canMove = true;
     [SerializeField] public bool isBuilding;
+    [SerializeField] public bool isRanger;
     public int currentHp;
     [HideInInspector] public int getDamage;
     [HideInInspector] public int currentAtk;
@@ -20,6 +21,7 @@ public abstract class Core : MonoBehaviour
     [Header("Detector")]
     [SerializeField] public Detect detect;
     [SerializeField] public float detectRange;
+    [SerializeField] public float attackRange;
     [SerializeField] public LayerMask detectLayer;
     [SerializeField] public float timeBtwHit;
     [SerializeField] public GameObject[] multiEnemy;
@@ -35,7 +37,7 @@ public abstract class Core : MonoBehaviour
 
     public virtual bool Detect()
     {
-        return detect.Detecting(detectRange, detectLayer);
+        return detect.Detecting(attackRange, detectLayer);
     }
     public virtual Transform ClosetEnemy()
     {

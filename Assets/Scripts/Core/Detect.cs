@@ -20,7 +20,7 @@ public class Detect : MonoBehaviour
 
     internal Transform GetClosetEnemy(float detectRange, LayerMask detectLayer)
     {
-        Collider[] multiEnemy = Physics.OverlapSphere(transform.position, detectRange+3, detectLayer);
+        Collider[] multiEnemy = Physics.OverlapSphere(transform.position, detectRange, detectLayer);
         float closetDistance = Mathf.Infinity;
         Transform trans = null;
 
@@ -46,7 +46,6 @@ public class Detect : MonoBehaviour
 
     internal Transform GetClosetBuilding(bool isPayerOwner)
     {
-        //isPayerOwner = this.GetComponent<Core>().isOwner;
         GameObject[] buildings = GameObject.FindGameObjectsWithTag("Building");
         float closetDistance = Mathf.Infinity;
         Transform closetBuilding = null;
@@ -56,10 +55,10 @@ public class Detect : MonoBehaviour
         {
             foreach (GameObject enemyBuilding in buildings)
             {
-                if (isPayerOwner && !enemyBuilding.GetComponent<Core>().isOwner)
+                if (isPayerOwner && !enemyBuilding.GetComponent<Core>().isOwner || !isPayerOwner && enemyBuilding.GetComponent<Core>().isOwner)
                 {
                     targetBuilding.Add(enemyBuilding);
-                    Debug.Log("? +" + targetBuilding.Count);
+                    //Debug.Log("? +" + targetBuilding.Count);
                 }           
             }
             
@@ -77,8 +76,6 @@ public class Detect : MonoBehaviour
                 }
             }
         }
-        //if(isPayerOwner)
-        
         return closetBuilding;
     }
 

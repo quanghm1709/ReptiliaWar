@@ -19,30 +19,15 @@ public class CharacterAttack : State
 
             if (_agent.timeBtwHitCD <= 0)
             {
-                Collider[] hitColliders = Physics.OverlapSphere(_agent.hitPoint.position, _agent.range, _agent.detectLayer);
                 _agent.anim.SetBool("IsAttack", true);
                 _agent.anim.SetFloat("Move", 0);
-                if (_agent.isOwner)
+                if (!_agent.isRanger)
                 {
-                    foreach (Collider enemy in hitColliders)
-                    {
-                        if (!enemy.gameObject.GetComponent<Core>().isOwner)
-                        {
-                            enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
-                            enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
-                        }
-                    }
+                    MeleeAttack();
                 }
                 else
                 {
-                    foreach (Collider enemy in hitColliders)
-                    {
-                        if (enemy.gameObject.GetComponent<Core>().isOwner)
-                        {
-                            enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
-                            enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
-                        }
-                    }
+                    RangeAttack();
                 }
                 _agent.timeBtwHitCD = _agent.timeBtwHit;
             }
@@ -57,5 +42,46 @@ public class CharacterAttack : State
         {
             _agent.ChangeState(CharacterState.Moving);
         }
+    }
+
+    private void MeleeAttack()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(_agent.hitPoint.position, _agent.range, _agent.detectLayer);
+        
+        if (_agent.isOwner)
+        {
+            foreach (Collider enemy in hitColliders)
+            {
+                if (!enemy.gameObject.GetComponent<Core>().isOwner)
+                {
+                    enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
+                    enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+                }
+            }
+        }
+        else
+        {
+            foreach (Collider enemy in hitColliders)
+            {
+                if (enemy.gameObject.GetComponent<Core>().isOwner)
+                {
+                    enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
+                    enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+                }
+            }
+        }
+    }
+
+    private void RangeAttack()
+    {
+        _agent.enemyTarget = _agent.detect.GetClosetEnemy(_agent.detectRange, _agent.detectLayer);
+
+        if (_agent.enemyTarget == null)
+        {
+            _agent.enemyTarget = _agent.detect.GetClosetBuilding(_agent.isOwner);
+        }
+
+        var fireball = Instantiate(_agent.bullet, _agent.firePoint.position, _agent.firePoint.rotation);
+        fireball.GetComponent<BulletController>().Setting(_agent.currentAtk, _agent.enemyTarget,!_agent.isOwner);
     }
 }

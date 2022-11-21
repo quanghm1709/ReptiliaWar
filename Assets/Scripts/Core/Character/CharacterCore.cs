@@ -21,6 +21,9 @@ public abstract class CharacterCore : Core
 
     [Header("Range Combat")]
     [SerializeField] public float rangeRange;
+    [SerializeField] public Transform enemyTarget;
+    [SerializeField] public Transform firePoint;
+    [SerializeField] public GameObject bullet;
 
     [Header("Behavior")]
     [SerializeField] public List<State> states;
