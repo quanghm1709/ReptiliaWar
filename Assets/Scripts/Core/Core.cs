@@ -24,7 +24,6 @@ public abstract class Core : MonoBehaviour
     [SerializeField] public float attackRange;
     [SerializeField] public LayerMask detectLayer;
     [SerializeField] public float timeBtwHit;
-    [SerializeField] public GameObject[] multiEnemy;
     [HideInInspector] public float timeBtwHitCD;
     [HideInInspector] public Transform closetEnemy;
 

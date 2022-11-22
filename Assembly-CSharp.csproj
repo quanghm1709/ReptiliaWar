@@ -62,13 +62,15 @@
     <Compile Include="Assets\Scripts\Core\Character\MeleeCharacter.cs" />
     <Compile Include="Assets\Scripts\Core\Core.cs" />
     <Compile Include="Assets\Scripts\Core\Detect.cs" />
+    <Compile Include="Assets\Scripts\Core\BulletController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\GetCloseEnemy.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterDead.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterGetDamage.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Core\BulletController.cs" />
+    <Compile Include="Assets\Scripts\Core\Character\TowerCore.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\GameManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

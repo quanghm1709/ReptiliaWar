@@ -35,10 +35,18 @@ public class BulletController : MonoBehaviour
 
     private void OnTriggerEnter(Collider enemy)
     {
-        if (enemy != null && enemy.tag != "Ground")
+
+        if (enemy.tag != "Ground")
         {
-            enemy.gameObject.GetComponent<CharacterCore>().SetTotalDamageToGet(damage);
-            enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+            if (enemy.gameObject.GetComponent<Core>().isBuilding)
+            {
+                enemy.gameObject.GetComponent<TowerCore>().GetDamage(damage);
+            }
+            else
+            {
+                enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(damage);
+                enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+            }
             Destroy(gameObject);
         }
     }

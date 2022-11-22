@@ -54,8 +54,7 @@ public class CharacterAttack : State
             {
                 if (!enemy.gameObject.GetComponent<Core>().isOwner)
                 {
-                    enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
-                    enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+                    CheckTargetType(enemy);
                 }
             }
         }
@@ -65,8 +64,7 @@ public class CharacterAttack : State
             {
                 if (enemy.gameObject.GetComponent<Core>().isOwner)
                 {
-                    enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
-                    enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+                    CheckTargetType(enemy);
                 }
             }
         }
@@ -83,5 +81,18 @@ public class CharacterAttack : State
 
         var fireball = Instantiate(_agent.bullet, _agent.firePoint.position, _agent.firePoint.rotation);
         fireball.GetComponent<BulletController>().Setting(_agent.currentAtk, _agent.enemyTarget,!_agent.isOwner);
+    }
+
+    private void CheckTargetType(Collider enemy)
+    {
+        if (enemy.gameObject.GetComponent<Core>().isBuilding)
+        {
+            enemy.gameObject.GetComponent<TowerCore>().GetDamage(_agent.currentAtk);
+        }
+        else
+        {
+            enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(_agent.currentAtk);
+            enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+        }
     }
 }
