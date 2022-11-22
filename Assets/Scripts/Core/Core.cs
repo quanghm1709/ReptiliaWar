@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class Core : MonoBehaviour
 {
@@ -27,11 +28,16 @@ public abstract class Core : MonoBehaviour
     [HideInInspector] public float timeBtwHitCD;
     [HideInInspector] public Transform closetEnemy;
 
+    [Header("UI")]
+    [SerializeField] public Slider healthBar;
+
+    private Camera cam;
     private void Start()
     {
         currentHp = maxHp;
         currentAtk = maxAtk;
 
+        cam = Camera.main;
     }
 
     public virtual bool Detect()
@@ -49,5 +55,13 @@ public abstract class Core : MonoBehaviour
     public virtual void SetTotalDamageToGet(int damage)
     {
         getDamage = damage;
+    }
+
+    public virtual void UpdateHealthUI()
+    {
+        //healthBar.transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
+       // healthBar.transform.LookAt(cam.transform);
+        healthBar.value = currentHp;
+        healthBar.maxValue = maxHp;
     }
 }

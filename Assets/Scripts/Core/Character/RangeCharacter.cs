@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RangeCharacter : CharacterCore
 {
+    private void Update()
+    {
+        UpdateHealthUI();
+    }
+
     public override void ChangeState(CharacterState troopState)
     {
         throw new System.NotImplementedException();

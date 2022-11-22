@@ -10,7 +10,12 @@ public class MeleeCharacter : CharacterCore
         curState.Init(this);
         curState.Action();
 
-        
+        UpdateHealthUI();
+    }
+
+    public override void UpdateHealthUI()
+    {
+        base.UpdateHealthUI();
     }
 
     private State GetState(CharacterState characterState)

@@ -59,8 +59,10 @@
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterIdle.cs" />
     <Compile Include="Assets\Scripts\Core\Character\CharacterCore.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\State.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Core\Character\MeleeCharacter.cs" />
     <Compile Include="Assets\Scripts\Core\Core.cs" />
+    <Compile Include="Assets\Scripts\Core\Character\TowerCore.cs" />
     <Compile Include="Assets\Scripts\Core\Detect.cs" />
     <Compile Include="Assets\Scripts\Core\BulletController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\GetCloseEnemy.cs" />
@@ -69,8 +71,8 @@
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterGetDamage.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Core\Character\TowerCore.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\UIController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

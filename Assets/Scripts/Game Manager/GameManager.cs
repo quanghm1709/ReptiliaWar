@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> enemyCrystalTower;
     [SerializeField] private int myCrystal;
     [SerializeField] private int enemyCrystal;
-    [SerializeField] private float timeBtwCharge;
-    private float timeBtwChargeCD;
+
 
     private void Awake()
     {
@@ -47,12 +46,17 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log(myCrystalTower.Count);
     }
 
-    private void CheckCrystal()
+    public void AddCrystal(int myCrys, int enemyCrys)
     {
-        myCrystal += myCrystalTower.Count;
-        enemyCrystal += enemyCrystalTower.Count;
+        myCrystal += myCrys;
+        enemyCrystal += enemyCrys;
+    }
+
+    public void Buying(int myCrys, int enemyCrys)
+    {
+        myCrystal -= myCrys;
+        enemyCrystal -= enemyCrys;
     }
 }
