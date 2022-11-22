@@ -41,13 +41,18 @@ public class BulletController : MonoBehaviour
             if (enemy.gameObject.GetComponent<Core>().isBuilding)
             {
                 enemy.gameObject.GetComponent<TowerCore>().GetDamage(damage);
+                Destroy(gameObject);
             }
             else
             {
-                enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(damage);
-                enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+                if(enemy.GetComponent<Core>().isOwner && isEnemyBullet || !enemy.GetComponent<Core>().isOwner && !isEnemyBullet)
+                {
+                    enemy.gameObject.GetComponent<Core>().SetTotalDamageToGet(damage);
+                    enemy.gameObject.GetComponent<CharacterCore>().ChangeState(CharacterState.GetDamage);
+                    Destroy(gameObject);
+                }           
             }
-            Destroy(gameObject);
+            
         }
     }
 

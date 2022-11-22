@@ -13,6 +13,12 @@ public class TowerCore : Core
 {
     public TowerType towerType;
     public Transform spawnPoint;
+
+    private void Update()
+    {
+        UpdateHealthUI();
+    }
+
     public void GetDamage(int damage)
     {
         currentHp -= damage;

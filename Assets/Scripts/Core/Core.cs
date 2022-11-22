@@ -30,6 +30,7 @@ public abstract class Core : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] public Slider healthBar;
+    [SerializeField] public GameObject healthBarCanvas;
 
     private Camera cam;
     private void Start()
@@ -59,8 +60,7 @@ public abstract class Core : MonoBehaviour
 
     public virtual void UpdateHealthUI()
     {
-        //healthBar.transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position);
-       // healthBar.transform.LookAt(cam.transform);
+        healthBarCanvas.transform.LookAt(cam.transform);
         healthBar.value = currentHp;
         healthBar.maxValue = maxHp;
     }

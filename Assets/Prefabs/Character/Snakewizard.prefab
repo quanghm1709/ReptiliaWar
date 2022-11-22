@@ -629,6 +629,7 @@ MonoBehaviour:
   timeBtwHitCD: 0
   closetEnemy: {fileID: 0}
   healthBar: {fileID: 1246508744028384927}
+  healthBarCanvas: {fileID: 1246508744540918113}
   rb: {fileID: 7689598670962177932}
   anim: {fileID: 7689598671609059541}
   col: {fileID: 7689598670962177930}
