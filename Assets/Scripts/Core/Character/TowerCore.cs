@@ -12,6 +12,7 @@ public enum TowerType
 public class TowerCore : Core
 {
     public TowerType towerType;
+    public Transform spawnPoint;
     public void GetDamage(int damage)
     {
         currentHp -= damage;

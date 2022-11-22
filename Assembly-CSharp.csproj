@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
     <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
     <Compile Include="Assets\Scripts\Game Manager\UIController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\CharacterManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

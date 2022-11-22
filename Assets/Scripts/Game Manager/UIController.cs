@@ -12,4 +12,11 @@ public class UIController : MonoBehaviour
     {
         instance = this;
     }
+
+    public void SpawnCharacter(int index)
+    {
+        Transform spwanpoint = GameObject.Find("Tower").GetComponent<TowerCore>().spawnPoint;
+
+        Instantiate(CharacterManager.instance.characterList[index], spwanpoint.position, spwanpoint.rotation);
+    }
 }
