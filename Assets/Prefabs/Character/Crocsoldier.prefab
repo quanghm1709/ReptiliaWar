@@ -517,6 +517,7 @@ MonoBehaviour:
   - {fileID: 8377140487365397033, guid: 3f90dc2a47dfa4441830f1615c47a8ac, type: 3}
   - {fileID: 3462964644394315775, guid: bb30b3c3a8528b740b8171d909721771, type: 3}
   _characterState: 0
+  unitPrice: 50
 --- !u!1 &2482958113959124547
 GameObject:
   m_ObjectHideFlags: 0

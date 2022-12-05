@@ -29,5 +29,8 @@ public abstract class CharacterCore : Core
     [SerializeField] public List<State> states;
     [HideInInspector] public CharacterState _characterState;
 
+    [Header("Cost")]
+    [SerializeField] public int unitPrice;
+
     public abstract void ChangeState(CharacterState troopState);
 }

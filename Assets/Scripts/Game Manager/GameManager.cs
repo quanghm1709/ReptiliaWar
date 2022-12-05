@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        
+        DisplayPlayerCrystal();
     }
 
     public void CheckCrystalTower()
@@ -58,5 +58,15 @@ public class GameManager : MonoBehaviour
     {
         myCrystal -= myCrys;
         enemyCrystal -= enemyCrys;
+    }
+
+    public int GetMyCystal()
+    {
+        return myCrystal;
+    }
+
+    private void DisplayPlayerCrystal()
+    {
+        UIController.instance.playerCrystal.text = "Current crystal: " + myCrystal;
     }
 }

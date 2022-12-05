@@ -56,24 +56,25 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterIdle.cs" />
     <Compile Include="Assets\Scripts\Core\Character\CharacterCore.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\State.cs" />
     <Compile Include="Assets\Scripts\Game Manager\GameManager.cs" />
     <Compile Include="Assets\Scripts\Core\Character\MeleeCharacter.cs" />
     <Compile Include="Assets\Scripts\Core\Core.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Core\Character\TowerCore.cs" />
     <Compile Include="Assets\Scripts\Core\Detect.cs" />
     <Compile Include="Assets\Scripts\Core\BulletController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\UIController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\GetCloseEnemy.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterDead.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterGetDamage.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\UIController.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\CharacterManager.cs" />
+    <Compile Include="Assets\Scripts\Core\Character\Tower\TowerWeapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

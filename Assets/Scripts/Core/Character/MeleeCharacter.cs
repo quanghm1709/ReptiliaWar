@@ -15,7 +15,7 @@ public class MeleeCharacter : CharacterCore
 
     public override void UpdateHealthUI()
     {
-        base.UpdateHealthUI();
+         base.UpdateHealthUI();
     }
 
     private State GetState(CharacterState characterState)
