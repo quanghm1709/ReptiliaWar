@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         DisplayPlayerCrystal();
+        if (Input.GetMouseButtonDown(0))
+        {
+            DisplayTowerUI();
+        }
+        
     }
 
     public void CheckCrystalTower()
@@ -69,4 +74,24 @@ public class GameManager : MonoBehaviour
     {
         UIController.instance.playerCrystal.text = "Current crystal: " + myCrystal;
     }
+
+    public void DisplayTowerUI()
+    {
+        Ray ray = UIController.instance.cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        {
+            TowerCore hitTower = raycastHit.collider.GetComponent<TowerCore>();
+            hitTower.weapUI.SetActive(true);
+        }
+        else
+        {
+           /*GameObject[] towers = GameObject.FindGameObjectsWithTag("Building");
+            Debug.Log(towers.Length);
+            foreach(GameObject tower in towers)
+            {
+                tower.GetComponent<TowerCore>().weapUI.SetActive(false);
+            }*/
+        }
+    }
+
 }

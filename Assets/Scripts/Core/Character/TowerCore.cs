@@ -13,10 +13,13 @@ public class TowerCore : Core
 {
     public TowerType towerType;
     public Transform spawnPoint;
+    public GameObject weapUI;
 
     private void Update()
     {
         UpdateHealthUI();
+        cam = Camera.main;
+        weapUI.transform.LookAt(cam.transform);
     }
 
     public void GetDamage(int damage)

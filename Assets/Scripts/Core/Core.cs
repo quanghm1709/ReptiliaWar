@@ -32,7 +32,8 @@ public abstract class Core : MonoBehaviour
     [SerializeField] public Slider healthBar;
     [SerializeField] public GameObject healthBarCanvas;
 
-    private Camera cam;
+    [HideInInspector]
+    public Camera cam;
     private void Start()
     {
         currentHp = maxHp;

@@ -13,7 +13,8 @@ public class CharacterDead : State
         base.Action();
         _agent.col.isTrigger = true;
         _agent.anim.SetBool("IsDead", true);
-        _agent.anim.SetBool("IsAttack", true);
+        _agent.anim.SetBool("IsAttack", false);
         _agent.anim.SetFloat("Move", 0);
+        _agent.gameObject.SetActive(false);
     }
 }
