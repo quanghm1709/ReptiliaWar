@@ -347,7 +347,7 @@ MonoBehaviour:
   weaponMesh: {fileID: 1460824470}
   enemyTarget: {fileID: 0}
   firePoint: {fileID: 409892934}
-  bullet: {fileID: 2504835492562952884, guid: 31e0004c3b38933479a57b350dd2d5fe, type: 3}
+  bullet: {fileID: 7715857320821931811, guid: 1d2c6482d38a23a41b3844a248b95816, type: 3}
 --- !u!1001 &25238791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15433,11 +15433,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 608f799aa0e79db47a2ab4bb973d7094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tower: {fileID: 932801381}
+  tower: {fileID: 1366814757}
   weaponMesh: {fileID: 85681353}
   enemyTarget: {fileID: 0}
   firePoint: {fileID: 1769078055}
-  bullet: {fileID: 2504835492562952884, guid: 31e0004c3b38933479a57b350dd2d5fe, type: 3}
+  bullet: {fileID: 7922382648514978796, guid: 843baee13eb44f64fa002850911c2670, type: 3}
 --- !u!1001 &790536991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18090,8 +18090,8 @@ MonoBehaviour:
   currentAtk: 0
   characterSprite: {fileID: 421386787}
   detect: {fileID: 485069806}
-  detectRange: 10
-  attackRange: 8
+  detectRange: 15
+  attackRange: 14
   detectLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -23305,9 +23305,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1219226943}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4548857, y: 0.040971387, z: -3.8096962}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1366814759}
   m_RootOrder: 1
