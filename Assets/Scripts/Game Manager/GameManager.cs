@@ -30,16 +30,16 @@ public class GameManager : MonoBehaviour
         {
             DisplayTowerUI();
         }
-        
+
     }
 
     public void CheckCrystalTower()
     {
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Building");
-        
-        foreach(GameObject tower in towers)
+
+        foreach (GameObject tower in towers)
         {
-            if(tower.GetComponent<TowerCore>().towerType == TowerType.Crystal)
+            if (tower.GetComponent<TowerCore>().towerType == TowerType.Crystal)
             {
                 if (tower.GetComponent<TowerCore>().isOwner)
                 {
@@ -68,6 +68,10 @@ public class GameManager : MonoBehaviour
     public int GetMyCystal()
     {
         return myCrystal;
+    }
+    public int GetEnemyCrystal()
+    {
+        return enemyCrystal;
     }
 
     private void DisplayPlayerCrystal()

@@ -25,6 +25,10 @@ public class TowerCore : Core
     public void GetDamage(int damage)
     {
         currentHp -= damage;
+        if(currentHp <= 0)
+        {
+            Destroy(this.gameObject);
+        }
     }
     private void OnDrawGizmos()
     {

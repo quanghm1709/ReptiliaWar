@@ -58,7 +58,6 @@ public class Detect : MonoBehaviour
                 if (isPayerOwner && !enemyBuilding.GetComponent<Core>().isOwner || !isPayerOwner && enemyBuilding.GetComponent<Core>().isOwner)
                 {
                     targetBuilding.Add(enemyBuilding);
-                    //Debug.Log("? +" + targetBuilding.Count);
                 }           
             }
             

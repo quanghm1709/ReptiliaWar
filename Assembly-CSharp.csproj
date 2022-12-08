@@ -56,6 +56,7 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Core\Character\Tower\BuildTowerWeapBtn.cs" />
     <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterIdle.cs" />
     <Compile Include="Assets\Scripts\Core\Character\CharacterCore.cs" />
@@ -72,11 +73,11 @@
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterDead.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterGetDamage.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\TowerWeaponManager.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Tower\TowerWeapon.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\TowerWeaponManager.cs" />
-    <Compile Include="Assets\Scripts\Core\Character\Tower\BuildTowerWeapBtn.cs" />
+    <Compile Include="Assets\Scripts\Core\Enemy\EnemyController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

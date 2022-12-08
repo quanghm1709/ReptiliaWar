@@ -9259,6 +9259,7 @@ MonoBehaviour:
   maxAtk: 10
   isOwner: 1
   canMove: 1
+  canAttack: 0
   isBuilding: 1
   isRanger: 0
   currentHp: 0
@@ -11069,6 +11070,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 606249942}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &606285575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 606285576}
+  m_Layer: 6
+  m_Name: Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &606285576
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606285575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.11, y: 0, z: -2.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1312016506}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &610121260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15127,6 +15158,7 @@ MonoBehaviour:
   maxAtk: 10
   isOwner: 1
   canMove: 1
+  canAttack: 0
   isBuilding: 1
   isRanger: 0
   currentHp: 0
@@ -18083,6 +18115,7 @@ MonoBehaviour:
   maxAtk: 1
   isOwner: 0
   canMove: 0
+  canAttack: 0
   isBuilding: 1
   isRanger: 0
   currentHp: 0
@@ -18410,13 +18443,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.29325983, y: 0.38576046, z: -0.16737866, w: 0.8585872}
-  m_LocalPosition: {x: 26.5, y: 25.1, z: -43.4}
+  m_LocalRotation: {x: 0.3102031, y: 0.24918248, z: -0.06936163, w: 0.9148066}
+  m_LocalPosition: {x: 25.9, y: 20.7, z: -58.4}
   m_LocalScale: {x: 0.99521, y: 0.99521, z: 0.99521}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 39.251, y: 46.772, z: -4.53}
+  m_LocalEulerAnglesHint: {x: 37.022, y: 31.14, z: 1.987}
 --- !u!1001 &963778489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23469,8 +23502,9 @@ MonoBehaviour:
   characterName: Crystal Tower
   maxHp: 100
   maxAtk: 10
-  isOwner: 1
+  isOwner: 0
   canMove: 1
+  canAttack: 0
   isBuilding: 1
   isRanger: 0
   currentHp: 0
@@ -24234,6 +24268,7 @@ MonoBehaviour:
   maxAtk: 10
   isOwner: 0
   canMove: 0
+  canAttack: 0
   isBuilding: 1
   isRanger: 0
   currentHp: 0
@@ -24283,6 +24318,7 @@ Transform:
   - {fileID: 2038699545}
   - {fileID: 1643263125}
   - {fileID: 721517613}
+  - {fileID: 606285576}
   m_Father: {fileID: 1317095704}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25681,9 +25717,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Tower
   maxHp: 100
-  maxAtk: 10
+  maxAtk: 1
   isOwner: 1
   canMove: 1
+  canAttack: 0
   isBuilding: 1
   isRanger: 0
   currentHp: 0
@@ -25696,7 +25733,7 @@ MonoBehaviour:
   detectLayer:
     serializedVersion: 2
     m_Bits: 64
-  timeBtwHit: 0
+  timeBtwHit: 1
   timeBtwHitCD: 0
   closetEnemy: {fileID: 0}
   healthBar: {fileID: 1419076452}
@@ -29749,6 +29786,53 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 44831dc10cbc44b4b87663eb2b49f402, type: 3}
+--- !u!1 &1624828592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1624828593}
+  - component: {fileID: 1624828594}
+  m_Layer: 0
+  m_Name: Enemy Controller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1624828593
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624828592}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -96.84206, y: -49.06029, z: 8.894264}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1628879696}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1624828594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624828592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d8f4594c8c4b84bb61bf72e14f51b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterList:
+  - {fileID: 7231872298451665941, guid: f453504bb1222ff44ab61a7d516e34f6, type: 3}
+  - {fileID: 4772899255280230177, guid: 946620223988c3746b2a21bfc1cf9917, type: 3}
+  spawnPoint: {fileID: 606285576}
 --- !u!4 &1625446154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 44831dc10cbc44b4b87663eb2b49f402,
@@ -29869,6 +29953,7 @@ Transform:
   - {fileID: 1177368589}
   - {fileID: 1014493463}
   - {fileID: 971267714}
+  - {fileID: 1624828593}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

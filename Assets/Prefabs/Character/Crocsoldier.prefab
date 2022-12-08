@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3726415, b: 0.3726415, a: 1}
+  m_Color: {r: 0.45017484, g: 1, b: 0.37254906, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -481,6 +481,7 @@ MonoBehaviour:
   maxAtk: 1
   isOwner: 1
   canMove: 1
+  canAttack: 0
   isBuilding: 0
   isRanger: 0
   currentHp: 0
@@ -498,6 +499,7 @@ MonoBehaviour:
   closetEnemy: {fileID: 0}
   healthBar: {fileID: 1114624161}
   healthBarCanvas: {fileID: 1769264091}
+  cam: {fileID: 0}
   rb: {fileID: 2482958113080956633}
   anim: {fileID: 2482958112584874368}
   col: {fileID: 2482958113080956639}
