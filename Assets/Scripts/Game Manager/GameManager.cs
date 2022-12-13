@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<GameObject> enemyCrystalTower;
     [SerializeField] private int myCrystal;
     [SerializeField] private int enemyCrystal;
-
+    [SerializeField] private int playerAvailbleSlot;
+    [SerializeField] private int enemyAvailbleSlot;
 
     private void Awake()
     {
@@ -74,6 +75,16 @@ public class GameManager : MonoBehaviour
         return enemyCrystal;
     }
 
+    public int GetPlayerSlot()
+    {
+        return playerAvailbleSlot;
+    }
+
+    public int GetEnemySlot()
+    {
+        return enemyAvailbleSlot;
+    }
+
     private void DisplayPlayerCrystal()
     {
         UIController.instance.playerCrystal.text = "Current crystal: " + myCrystal;
@@ -85,7 +96,11 @@ public class GameManager : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit raycastHit))
         {
             TowerCore hitTower = raycastHit.collider.GetComponent<TowerCore>();
-            hitTower.weapUI.SetActive(true);
+            if (hitTower.canBuild)
+            {
+                hitTower.weapUI.SetActive(true);
+            }
+            
         }
         else
         {

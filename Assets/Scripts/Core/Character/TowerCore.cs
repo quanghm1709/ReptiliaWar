@@ -14,6 +14,8 @@ public class TowerCore : Core
     public TowerType towerType;
     public Transform spawnPoint;
     public GameObject weapUI;
+    public GameObject thisTower;
+    public bool canBuild;
 
     private void Update()
     {
@@ -27,7 +29,7 @@ public class TowerCore : Core
         currentHp -= damage;
         if(currentHp <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(thisTower);
         }
     }
     private void OnDrawGizmos()

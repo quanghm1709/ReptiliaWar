@@ -15,6 +15,15 @@ public class CharacterDead : State
         _agent.anim.SetBool("IsDead", true);
         _agent.anim.SetBool("IsAttack", false);
         _agent.anim.SetFloat("Move", 0);
-        _agent.gameObject.SetActive(false);
+        if (_agent.isOwner)
+        {
+            UIController.instance.UpdateCurrentSLot(-1);
+        }
+        else
+        {
+            EnemyController.instance.UpdateCurrentSLot(-1);
+        }
+        
+        Destroy(_agent.gameObject);
     }
 }

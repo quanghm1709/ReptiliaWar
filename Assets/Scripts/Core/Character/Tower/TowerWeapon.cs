@@ -12,6 +12,7 @@ public class TowerWeapon : MonoBehaviour
     [SerializeField] public Transform enemyTarget;
     [SerializeField] public Transform firePoint;
     [SerializeField] public GameObject bullet;
+    private bool canAttack;
 
     private void Start()
     {
@@ -21,6 +22,7 @@ public class TowerWeapon : MonoBehaviour
     private void Update()
     {
         Attack();
+        CheckBuild();
 
         if (Input.GetKeyDown(KeyCode.K))
         {
@@ -38,32 +40,49 @@ public class TowerWeapon : MonoBehaviour
 
     private void Attack()
     {
-        if (tower.Detect())
+        if (canAttack)
         {
-            enemyTarget = tower.detect.GetClosetEnemy(tower.detectRange, tower.detectLayer);
-            
-            if(enemyTarget != null)
+            if (tower.Detect())
             {
-                Vector3 lookDir = enemyTarget.position - transform.position;
-                float angle = Mathf.Atan2(lookDir.x, lookDir.z) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(0, angle, 0);
-            }
+                enemyTarget = tower.detect.GetClosetEnemy(tower.detectRange, tower.detectLayer);
 
-            if (tower.timeBtwHitCD <= 0)
-            {
                 if (enemyTarget != null)
                 {
-                    var fireball = Instantiate(bullet, firePoint.position, firePoint.rotation);
-                    fireball.GetComponent<BulletController>().Setting(tower.currentAtk, enemyTarget, !tower.isOwner);
-                    tower.timeBtwHitCD = tower.timeBtwHit;
+                    Vector3 lookDir = enemyTarget.position - transform.position;
+                    float angle = Mathf.Atan2(lookDir.x, lookDir.z) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(0, angle, 0);
                 }
 
-                
+                if (tower.timeBtwHitCD <= 0)
+                {
+                    if (enemyTarget != null)
+                    {
+                        var fireball = Instantiate(bullet, firePoint.position, firePoint.rotation);
+                        fireball.GetComponent<BulletController>().Setting(tower.currentAtk, enemyTarget, !tower.isOwner);
+                        tower.timeBtwHitCD = tower.timeBtwHit;
+                    }
+
+
+                }
+                else
+                {
+                    tower.timeBtwHitCD -= Time.deltaTime;
+                }
             }
-            else
-            {
-                tower.timeBtwHitCD -= Time.deltaTime;
-            }
+        }
+    }
+
+    public void CheckBuild()
+    {
+        if(weaponMesh.transform.childCount > 0)
+        {
+            tower.canBuild = false;
+            canAttack = true;
+        }
+        else
+        {
+            tower.canBuild = true;
+            canAttack = false;
         }
     }
 }

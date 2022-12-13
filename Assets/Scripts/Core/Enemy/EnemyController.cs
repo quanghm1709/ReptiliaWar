@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public List<GameObject> characterList;
     [SerializeField] private Transform spawnPoint;
     private float timeBtwBuy;
+    private int currentSlot;
 
     private void Start()
     {
@@ -31,10 +32,17 @@ public class EnemyController : MonoBehaviour
     private void Spawn()
     {
         int randomChar = Random.Range(0, characterList.Count);
-        if(characterList[randomChar].GetComponent<CharacterCore>().unitPrice < GameManager.instance.GetEnemyCrystal())
+        if(characterList[randomChar].GetComponent<CharacterCore>().unitPrice < GameManager.instance.GetEnemyCrystal() 
+            && currentSlot < GameManager.instance.GetEnemySlot())
         {
             Instantiate(characterList[randomChar], spawnPoint.position, spawnPoint.rotation);
-            timeBtwBuy = Random.Range(1, 3);
+            timeBtwBuy = Random.Range(1, 5);
+            GameManager.instance.Buying(0, characterList[randomChar].GetComponent<CharacterCore>().unitPrice);
+            UpdateCurrentSLot(1);
         }      
+    }
+    public void UpdateCurrentSLot(int slot)
+    {
+        currentSlot += slot;
     }
 }

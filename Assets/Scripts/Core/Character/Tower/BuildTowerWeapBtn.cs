@@ -22,6 +22,7 @@ public class BuildTowerWeapBtn : MonoBehaviour
         newWeap.transform.position = buildPoint.transform.position;
         newWeap.transform.localRotation = Quaternion.Euler(Vector3.zero);
         newWeap.transform.localScale = new Vector3(2, 2, 2);
+        
         tower.weapUI.SetActive(false);
     }
 }
