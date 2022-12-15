@@ -9,10 +9,25 @@ public class UIController : MonoBehaviour
 
     [SerializeField] public Camera cam;
     [SerializeField] public Text playerCrystal;
+    [SerializeField] private Text mes;
     private int currentSlot;
+    private float activeMes = 0;
+
     private void Awake()
     {
         instance = this;
+    }
+
+    private void Update()
+    {
+        if(activeMes <= 0)
+        {
+            mes.gameObject.SetActive(false);
+        }
+        else
+        {
+            activeMes -= Time.deltaTime;
+        }
     }
 
     public void SpawnCharacter(int index)
@@ -27,6 +42,12 @@ public class UIController : MonoBehaviour
             UpdateCurrentSLot(1);
         }
         
+    }
+
+    public void ActiveMessage()
+    {
+        mes.gameObject.SetActive(true);
+        activeMes = 3f;
     }
 
     public void UpdateCurrentSLot(int slot)

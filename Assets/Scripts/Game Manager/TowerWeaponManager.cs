@@ -8,6 +8,7 @@ public class TowerWeaponManager : MonoBehaviour
 
     [Header("Weap Mesh")]
     public GameObject[] weapList;
+    public int[] price;
 
     private void Start()
     {
