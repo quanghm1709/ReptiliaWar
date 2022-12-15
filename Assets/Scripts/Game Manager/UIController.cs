@@ -35,11 +35,12 @@ public class UIController : MonoBehaviour
         Transform spwanpoint = GameObject.Find("Tower").GetComponent<TowerCore>().spawnPoint;
         int unitPrice = CharacterManager.instance.characterList[index].GetComponent<CharacterCore>().unitPrice;
 
-        if(unitPrice <= GameManager.instance.GetMyCystal() && currentSlot < GameManager.instance.GetPlayerSlot())
+        if(unitPrice <= GameManager.instance.GetMyCystal() && currentSlot < GameManager.instance.GetPlayerSlot() && CharacterManager.instance.canBuy[index])
         {
             Instantiate(CharacterManager.instance.characterList[index], spwanpoint.position, spwanpoint.rotation);
             GameManager.instance.Buying(unitPrice, 0);
             UpdateCurrentSLot(1);
+            CharacterManager.instance.SetBuyCD(index);
         }
         
     }

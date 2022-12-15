@@ -62,7 +62,11 @@ public abstract class Core : MonoBehaviour
 
     public virtual void UpdateHealthUI()
     {
-        healthBarCanvas.transform.LookAt(cam.transform);
+        if (!isBuilding)
+        {
+            healthBarCanvas.transform.LookAt(cam.transform);
+        }
+       
         healthBar.value = currentHp;
         healthBar.maxValue = maxHp;
     }
