@@ -7,6 +7,7 @@ public enum TowerType
     Base,
     Crystal,
     Wall,
+    HQ,
 }
 
 public class TowerCore : Core
@@ -21,7 +22,7 @@ public class TowerCore : Core
     {
         UpdateHealthUI();
         cam = Camera.main;
-        weapUI.transform.LookAt(cam.transform);
+        //weapUI.transform.LookAt(cam.transform);
     }
 
     public void GetDamage(int damage)
@@ -30,6 +31,11 @@ public class TowerCore : Core
         if(currentHp <= 0)
         {
             Destroy(thisTower);
+            if (towerType == TowerType.HQ)
+            {
+                UIController.instance.GameOverPanel.SetActive(true);
+                Time.timeScale = 0f;
+            }         
         }
     }
     private void OnDrawGizmos()

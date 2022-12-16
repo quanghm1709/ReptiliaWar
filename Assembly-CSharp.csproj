@@ -60,6 +60,7 @@
     <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterIdle.cs" />
     <Compile Include="Assets\Scripts\Core\Enemy\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\LoadScene.cs" />
     <Compile Include="Assets\Scripts\Core\Character\CharacterCore.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\State.cs" />
     <Compile Include="Assets\Scripts\Game Manager\GameManager.cs" />
@@ -74,11 +75,12 @@
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterDead.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterGetDamage.cs" />
+    <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Game Manager\TowerWeaponManager.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Tower\TowerWeapon.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Core\Character\CharacterUI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

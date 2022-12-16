@@ -6,12 +6,9 @@ public class EnemyController : MonoBehaviour
 {
     public static EnemyController instance;
 
-    [Header("Enemy Character List")] 
-    public List<GameObject> characterList;
+    [Header("Enemy Character List")]
+    public List<CharacterUI> enemyCharacterList;
     [SerializeField] private Transform spawnPoint;
-    [SerializeField] private List<float> characterBuyCD;
-    [SerializeField] public List<bool> canBuy;
-    [SerializeField] private List<float> characterBuyTime;
     private float timeBtwBuy;
     private int currentSlot;
 
@@ -33,31 +30,31 @@ public class EnemyController : MonoBehaviour
             timeBtwBuy -= Time.deltaTime;
         }
 
-        for (int i = 0; i < characterBuyTime.Count; i++)
+        for (int i = 0; i < enemyCharacterList.Count; i++)
         {
-            if (characterBuyTime[i] <= 0)
+            if (enemyCharacterList[i].characterBuyTime <= 0)
             {
-                canBuy[i] = true;
+                enemyCharacterList[i].canBuy = true;
             }
             else
             {
-                canBuy[i] = false;
-                characterBuyTime[i] -= Time.deltaTime;
+                enemyCharacterList[i].canBuy = false;
+                enemyCharacterList[i].characterBuyTime -= Time.deltaTime;
             }
         }
     }
     private void Spawn()
     {
-        int randomChar = Random.Range(0, characterList.Count);
-        if(characterList[randomChar].GetComponent<CharacterCore>().unitPrice < GameManager.instance.GetEnemyCrystal() 
+        int randomChar = Random.Range(0, enemyCharacterList.Count);
+        if(enemyCharacterList[randomChar].character.GetComponent<CharacterCore>().unitPrice < GameManager.instance.GetEnemyCrystal() 
             && currentSlot < GameManager.instance.GetEnemySlot()
-            && canBuy[randomChar])
+            && enemyCharacterList[randomChar].canBuy)
         {
-            Instantiate(characterList[randomChar], spawnPoint.position, spawnPoint.rotation);
+            Instantiate(enemyCharacterList[randomChar].character, spawnPoint.position, spawnPoint.rotation);
             timeBtwBuy = Random.Range(1, 5);
-            GameManager.instance.Buying(0, characterList[randomChar].GetComponent<CharacterCore>().unitPrice);
+            GameManager.instance.Buying(0, enemyCharacterList[randomChar].character.GetComponent<CharacterCore>().unitPrice);
             UpdateCurrentSLot(1);
-            characterBuyTime[randomChar] = characterBuyCD[randomChar];
+            enemyCharacterList[randomChar].characterBuyTime = enemyCharacterList[randomChar].characterBuyCD;
         }      
     }
     public void UpdateCurrentSLot(int slot)

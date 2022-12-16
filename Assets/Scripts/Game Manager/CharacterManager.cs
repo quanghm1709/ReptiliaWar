@@ -7,10 +7,7 @@ public class CharacterManager : MonoBehaviour
     public static CharacterManager instance;
 
     [Header("Character List")] 
-    public List<GameObject> characterList;
-    [SerializeField] private List<float> characterBuyCD;
-    [SerializeField] public List<bool> canBuy;
-    [SerializeField] private List<float> characterBuyTime;
+    public List<CharacterUI> playerCharacterList;
 
     private void Awake()
     {
@@ -23,22 +20,26 @@ public class CharacterManager : MonoBehaviour
 
     private void Update()
     {
-        for(int i = 0; i < characterBuyTime.Count; i++)
+        for(int i = 0; i < playerCharacterList.Count; i++)
         {
-            if(characterBuyTime[i] <= 0)
+            if(playerCharacterList[i].characterBuyTime <= 0)
             {
-                canBuy[i] = true;
+                playerCharacterList[i].canBuy = true;
             }
             else
             {
-                canBuy[i] = false;
-                characterBuyTime[i] -= Time.deltaTime;
+                playerCharacterList[i].canBuy = false;
+                playerCharacterList[i].characterBuyTime -= Time.deltaTime;
             }
+        }
+        for (int i = 0; i < playerCharacterList.Count; i++)
+        {
+            UIController.instance.buyCD[i].fillAmount = playerCharacterList[i].characterBuyTime / playerCharacterList[i].characterBuyCD;
         }
     }
 
     public void SetBuyCD(int i)
     {
-        characterBuyTime[i] = characterBuyCD[i];
+        playerCharacterList[i].characterBuyTime = playerCharacterList[i].characterBuyCD;
     }
 }

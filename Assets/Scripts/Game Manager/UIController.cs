@@ -10,6 +10,9 @@ public class UIController : MonoBehaviour
     [SerializeField] public Camera cam;
     [SerializeField] public Text playerCrystal;
     [SerializeField] private Text mes;
+    public GameObject GameOverPanel;
+    [SerializeField] public List<Image> buyCD;
+
     private int currentSlot;
     private float activeMes = 0;
 
@@ -33,11 +36,11 @@ public class UIController : MonoBehaviour
     public void SpawnCharacter(int index)
     {
         Transform spwanpoint = GameObject.Find("Tower").GetComponent<TowerCore>().spawnPoint;
-        int unitPrice = CharacterManager.instance.characterList[index].GetComponent<CharacterCore>().unitPrice;
+        int unitPrice = CharacterManager.instance.playerCharacterList[index].character.GetComponent<CharacterCore>().unitPrice;
 
-        if(unitPrice <= GameManager.instance.GetMyCystal() && currentSlot < GameManager.instance.GetPlayerSlot() && CharacterManager.instance.canBuy[index])
+        if(unitPrice <= GameManager.instance.GetMyCystal() && currentSlot < GameManager.instance.GetPlayerSlot() && CharacterManager.instance.playerCharacterList[index].canBuy)
         {
-            Instantiate(CharacterManager.instance.characterList[index], spwanpoint.position, spwanpoint.rotation);
+            Instantiate(CharacterManager.instance.playerCharacterList[index].character, spwanpoint.position, spwanpoint.rotation);
             GameManager.instance.Buying(unitPrice, 0);
             UpdateCurrentSLot(1);
             CharacterManager.instance.SetBuyCD(index);
