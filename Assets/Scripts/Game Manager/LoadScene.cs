@@ -12,17 +12,6 @@ public class LoadScene : MonoBehaviour
 
     private void Update()
     {
-        /*if(waitToLoad <= 0)
-        {
-            canLoad = true;
-        }
-        else
-        {
-            canLoad = false;
-            HomeUIController.instace.loadCD.value = waitToLoad;
-            HomeUIController.instace.loadCD.maxValue = 2f;
-            waitToLoad -= Time.deltaTime;
-        }*/
 
         if (startLoad)
         {
@@ -33,11 +22,14 @@ public class LoadScene : MonoBehaviour
         }
     }
 
-    public void LoadToScene(string sceneToLoad)
-    {
-        sceneName = sceneToLoad;
-        HomeUIController.instace.loadScreen.SetActive(true);
-        startLoad = true;
+    public void LoadToScene(int sceneToLoad)
+    {      
+        if (HomeUIController.instace.isActiveMap[sceneToLoad])
+        {
+            sceneName = "SampleScene";
+            HomeUIController.instace.loadScreen.SetActive(true);
+            startLoad = true;
+        }       
     }
 
     IEnumerator WaitLoadToScene(string sceneToLoad)

@@ -8,12 +8,23 @@ public class UIController : MonoBehaviour
     public static UIController instance;
 
     [SerializeField] public Camera cam;
+
+    [Header("Player Data")]
     [SerializeField] public Text playerCrystal;
     [SerializeField] private Text mes;
     [SerializeField] private Text pop;
+
+    [Header("Game Over Screen")]
     public GameObject GameOverPanel;
+
+    [Header("Character UI")]
     [SerializeField] public List<Image> buyCD;
     [SerializeField] private GameObject[] selectCharBtn;
+
+    [Header("Pause Screen")]
+    [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private GameObject quitConfirm;
+
     private int currentSlot;
     private float activeMes = 0;
 
@@ -70,5 +81,31 @@ public class UIController : MonoBehaviour
     public void UpdateCurrentSLot(int slot)
     {
         currentSlot += slot;
+    }
+
+    public void PauseScreen()
+    {
+        if (pauseScreen.activeInHierarchy)
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+    }
+
+    public void QuitConfirm()
+    {
+        if (quitConfirm.activeInHierarchy)
+        {
+            quitConfirm.SetActive(false);
+        }
+        else
+        {
+            quitConfirm.SetActive(true);
+        }
     }
 }
