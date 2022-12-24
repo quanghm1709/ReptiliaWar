@@ -8,6 +8,7 @@ public class CharacterManager : MonoBehaviour
 
     [Header("Character List")] 
     public List<CharacterUI> playerCharacterList;
+    public bool[] isActive;
 
     private void Awake()
     {
@@ -22,7 +23,7 @@ public class CharacterManager : MonoBehaviour
     {
         for(int i = 0; i < playerCharacterList.Count; i++)
         {
-            if(playerCharacterList[i].characterBuyTime <= 0)
+            if(playerCharacterList[i].characterBuyTime <= 0 && isActive[i])
             {
                 playerCharacterList[i].canBuy = true;
             }
@@ -32,10 +33,14 @@ public class CharacterManager : MonoBehaviour
                 playerCharacterList[i].characterBuyTime -= Time.deltaTime;
             }
         }
-        for (int i = 0; i < playerCharacterList.Count; i++)
+        if(UIController.instance != null)
         {
-            UIController.instance.buyCD[i].fillAmount = playerCharacterList[i].characterBuyTime / playerCharacterList[i].characterBuyCD;
+            for (int i = 0; i < playerCharacterList.Count; i++)
+            {
+                UIController.instance.buyCD[i].fillAmount = playerCharacterList[i].characterBuyTime / playerCharacterList[i].characterBuyCD;
+            }
         }
+
     }
 
     public void SetBuyCD(int i)

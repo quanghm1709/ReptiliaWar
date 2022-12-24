@@ -10,15 +10,26 @@ public class UIController : MonoBehaviour
     [SerializeField] public Camera cam;
     [SerializeField] public Text playerCrystal;
     [SerializeField] private Text mes;
+    [SerializeField] private Text pop;
     public GameObject GameOverPanel;
     [SerializeField] public List<Image> buyCD;
-
+    [SerializeField] private GameObject[] selectCharBtn;
     private int currentSlot;
     private float activeMes = 0;
 
     private void Awake()
     {
         instance = this;
+    }
+    private void Start()
+    {
+        for(int i = 0; i < CharacterManager.instance.isActive.Length; i++)
+        {
+            if (CharacterManager.instance.isActive[i])
+            {
+                selectCharBtn[i].SetActive(true);
+            }
+        }
     }
 
     private void Update()
@@ -31,6 +42,8 @@ public class UIController : MonoBehaviour
         {
             activeMes -= Time.deltaTime;
         }
+
+        pop.text = "Pop: " + currentSlot + "/" + GameManager.instance.GetPlayerSlot();
     }
 
     public void SpawnCharacter(int index)

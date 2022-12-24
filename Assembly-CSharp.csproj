@@ -79,8 +79,10 @@
     <Compile Include="Assets\Scripts\Game Manager\TowerWeaponManager.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Tower\TowerWeapon.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
-    <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
     <Compile Include="Assets\Scripts\Core\Character\CharacterUI.cs" />
+    <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\HomeUIController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\DontDestroyOnloadObj.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
