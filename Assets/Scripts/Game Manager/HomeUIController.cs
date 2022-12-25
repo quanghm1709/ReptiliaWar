@@ -13,6 +13,7 @@ public class HomeUIController : MonoBehaviour
     [SerializeField] private CharacterCore[] characterList;
     [SerializeField] private Text[] showData;
     [SerializeField] private GameObject[] characterlistUI;
+    [SerializeField] private GameObject[] unlockCharacter;
 
     [Header("Select Map")]
     [SerializeField] private GameObject mapScreen;
@@ -33,13 +34,9 @@ public class HomeUIController : MonoBehaviour
 
     private void Update()
     {
-        for(int i = 0; i < isActiveMap.Length; i++)
-        {
-            if (isActiveMap[i])
-            {
-                map[i].SetActive(false);
-            }
-        }    
+        
+        ActiveMap();
+        DisplayCharacterUI();
     }
 
     public void ShowDetails(int index)
@@ -78,8 +75,36 @@ public class HomeUIController : MonoBehaviour
         }
     }
 
+    public void DisplayCharacterUI()
+    {
+        for(int i = 0; i < CharacterManager.instance.isActive.Length; i++)
+        {
+            if (CharacterManager.instance.isActive[i])
+            {
+                characterlistUI[i].SetActive(true);
+                unlockCharacter[i].SetActive(false);
+            }
+        }
+    }
+
+    public void ActiveMap()
+    {
+        for (int i = 0; i < isActiveMap.Length; i++)
+        {
+            if (isActiveMap[i])
+            {
+                map[i].SetActive(false);
+            }
+        }
+    }
+
     public void CloseDetails()
     {
         showCharacterData.SetActive(false);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

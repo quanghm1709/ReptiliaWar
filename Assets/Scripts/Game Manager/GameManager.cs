@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int playerAvailbleSlot;
     [SerializeField] private int enemyAvailbleSlot;
 
+    [Header("Map Manager")]
+    [SerializeField] private GameObject[] map;
+
     private void Awake()
     {
         instance = this;
@@ -22,6 +25,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CheckCrystalTower();
+        Instantiate(map[MapSelect.instance.mapIndex]);     
     }
 
     private void Update()

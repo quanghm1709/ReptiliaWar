@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Core\Character\Tower\BuildTowerWeapBtn.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\HomeUIController.cs" />
     <Compile Include="Assets\Scripts\Game Manager\CrystalController.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterIdle.cs" />
     <Compile Include="Assets\Scripts\Core\Enemy\EnemyController.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Scripts\Core\Detect.cs" />
     <Compile Include="Assets\Scripts\Core\BulletController.cs" />
     <Compile Include="Assets\Scripts\Game Manager\UIController.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\DontDestroyOnloadObj.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\GetCloseEnemy.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterMove.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterDead.cs" />
@@ -81,8 +83,7 @@
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterAttack.cs" />
     <Compile Include="Assets\Scripts\Core\Character\CharacterUI.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\HomeUIController.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\DontDestroyOnloadObj.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\MapSelect.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

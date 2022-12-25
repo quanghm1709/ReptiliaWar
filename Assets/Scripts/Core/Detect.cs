@@ -68,7 +68,7 @@ public class Detect : MonoBehaviour
             {
                 float currentDistance;
                 currentDistance = Vector3.Distance(transform.position, enemyBuilding.transform.position);
-                if (currentDistance < closetDistance && enemyBuilding.GetComponent<Core>().currentHp > 0)
+                if (currentDistance < closetDistance && enemyBuilding.GetComponent<Core>().currentHp > 0 && !enemyBuilding.GetComponent<TowerCore>().canBuild)
                 {
                         closetDistance = currentDistance;
                         closetBuilding = enemyBuilding.transform;

@@ -7,8 +7,8 @@ public class LoadScene : MonoBehaviour
 {
     private float waitToLoad;
     private bool canLoad = false;
-    private string sceneName;
-    private bool startLoad = false;
+    [SerializeField] private string sceneName;
+    [SerializeField] private bool startLoad = false;
 
     private void Update()
     {
@@ -16,20 +16,38 @@ public class LoadScene : MonoBehaviour
         if (startLoad)
         {
             StartCoroutine(WaitLoadToScene(sceneName));
-            HomeUIController.instace.loadCD.minValue = 0f;
-            HomeUIController.instace.loadCD.value += Time.deltaTime;
-            HomeUIController.instace.loadCD.maxValue = 2f;
+            if (HomeUIController.instace != null)
+            {
+                HomeUIController.instace.loadCD.minValue = 0f;
+                HomeUIController.instace.loadCD.value += Time.deltaTime;
+                HomeUIController.instace.loadCD.maxValue = 2f;
+            }
+            if (UIController.instance != null)
+            {
+                UIController.instance.loadCD.minValue = 0f;
+                UIController.instance.loadCD.value += Time.deltaTime;
+                UIController.instance.loadCD.maxValue = 2f;
+            }
         }
     }
 
     public void LoadToScene(int sceneToLoad)
-    {      
-        if (HomeUIController.instace.isActiveMap[sceneToLoad])
+    {    
+        if(HomeUIController.instace != null)
         {
-            sceneName = "SampleScene";
-            HomeUIController.instace.loadScreen.SetActive(true);
+            if (HomeUIController.instace.isActiveMap[sceneToLoad])
+            {
+                HomeUIController.instace.loadScreen.SetActive(true);
+                startLoad = true;
+                MapSelect.instance.mapIndex = sceneToLoad;
+            }
+        }
+        if(UIController.instance != null)
+        {
+            UIController.instance.loadScreen.SetActive(true);
+            Time.timeScale = 1f;
             startLoad = true;
-        }       
+        }     
     }
 
     IEnumerator WaitLoadToScene(string sceneToLoad)

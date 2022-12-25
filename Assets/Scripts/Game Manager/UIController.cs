@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class UIController : MonoBehaviour
 {
@@ -25,6 +27,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject pauseScreen;
     [SerializeField] private GameObject quitConfirm;
 
+    [Header("Load Screen")]
+    public GameObject loadScreen;
+    public Slider loadCD;
+
     private int currentSlot;
     private float activeMes = 0;
 
@@ -34,6 +40,7 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
+        cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         for(int i = 0; i < CharacterManager.instance.isActive.Length; i++)
         {
             if (CharacterManager.instance.isActive[i])
@@ -107,5 +114,10 @@ public class UIController : MonoBehaviour
         {
             quitConfirm.SetActive(true);
         }
+    }
+
+    public void Home()
+    {
+        SceneManager.LoadScene("HomeScene");
     }
 }
