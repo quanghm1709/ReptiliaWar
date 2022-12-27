@@ -31,10 +31,10 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         DisplayPlayerCrystal();
-        if (Input.GetMouseButtonDown(0))
+        /*if (Input.GetMouseButtonDown(0))
         {
             DisplayTowerUI();
-        }
+        }*/
 
     }
 

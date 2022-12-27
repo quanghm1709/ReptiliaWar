@@ -31,6 +31,13 @@ public class UIController : MonoBehaviour
     public GameObject loadScreen;
     public Slider loadCD;
 
+    [Header("Build UI")]
+    [SerializeField] private GameObject buildBaseTower;
+    [SerializeField] private GameObject buildTowerWeap;
+    [SerializeField] private GameObject baseTower;
+    private Transform buildTarget;
+    private bool onBuild;
+
     private int currentSlot;
     private float activeMes = 0;
 
@@ -62,6 +69,11 @@ public class UIController : MonoBehaviour
         }
 
         pop.text = "Pop: " + currentSlot + "/" + GameManager.instance.GetPlayerSlot();
+       
+        if (Input.GetMouseButtonDown(0))
+        {
+            BuildTowerUI();
+        }
     }
 
     public void SpawnCharacter(int index)
@@ -77,6 +89,80 @@ public class UIController : MonoBehaviour
             CharacterManager.instance.SetBuyCD(index);
         }
         
+    }
+
+    private void BuildTowerUI()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit raycastHit))
+        {
+            TowerCore hitTower = raycastHit.collider.GetComponent<TowerCore>();
+            if(hitTower != null)
+            {
+                if (hitTower.canBuild)
+                {
+                    buildTarget = hitTower.gameObject.transform;
+                    buildTowerWeap.SetActive(true);
+                    onBuild = true;
+                }
+            }
+            else
+            {
+                TileBuild tile = raycastHit.collider.GetComponent<TileBuild>();
+                if (tile.canBuild)
+                {
+                    buildBaseTower.SetActive(true);
+                    buildTarget = tile.gameObject.transform;
+                    onBuild = true;
+                }              
+            }
+
+        }
+        else
+        {
+            if (!onBuild)
+            {
+                buildBaseTower.SetActive(false);
+            }
+        }
+    }
+
+    public void BuildTowerWeap(int index)
+    {
+        buildTarget.GetComponentInChildren<BuildTowerWeapBtn>().Build(index);
+        buildTowerWeap.SetActive(false);
+    }
+
+    public void BuilBase(int cost)
+    {
+        if (GameManager.instance.GetMyCystal() >= cost)
+        {
+            GameObject newWeap = Instantiate(baseTower);
+            newWeap.transform.position = new Vector3(buildTarget.transform.position.x, 1.1f, buildTarget.transform.position.z);
+            newWeap.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+            newWeap.transform.localScale = new Vector3(1, 1, 1);
+
+            GameManager.instance.Buying(cost, 0);
+            buildTarget.GetComponent<TileBuild>().canBuild = false;
+        }
+        else
+        {
+            UIController.instance.ActiveMessage();
+        }
+        buildBaseTower.SetActive(false);
+    }
+
+    public void CancelBuild()
+    {
+        buildTarget = null;
+        if (buildBaseTower.activeInHierarchy)
+        {
+            buildBaseTower.SetActive(false);
+        }
+        if (buildTowerWeap.activeInHierarchy)
+        {
+            buildTowerWeap.SetActive(false);
+        }
     }
 
     public void ActiveMessage()

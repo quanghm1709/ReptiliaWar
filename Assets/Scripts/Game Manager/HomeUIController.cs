@@ -29,14 +29,14 @@ public class HomeUIController : MonoBehaviour
 
     private void Start()
     {
-        instace = this;    
+        instace = this;
+        DisplayCharacterUI();
     }
 
     private void Update()
     {
         
         ActiveMap();
-        DisplayCharacterUI();
     }
 
     public void ShowDetails(int index)
@@ -44,11 +44,20 @@ public class HomeUIController : MonoBehaviour
         showCharacterData.SetActive(true);
         CharacterCore core = characterList[index];
 
-        showData[0].text = "Name: " + core.name;
-        showData[1].text = "Damage: " + core.maxAtk;
-        showData[2].text = "Hp: " + core.maxHp;
-        showData[3].text = "Range: " + core.attackRange;
-        showData[4].text = "Speed: " + core.speed;
+        for(int i = 0; i < characterlistUI.Length; i++)
+        {
+            if(i != index)
+            {
+                characterlistUI[i].SetActive(false);
+            }
+        }
+
+        showData[0].text =  core.name;
+        showData[1].text = ": " + core.maxAtk;
+        showData[2].text = ": " + core.maxHp;
+        showData[3].text = ": " + core.speed;
+        showData[4].text = ": " + core.attackRange;
+        showData[5].text = ": " + core.range;
     }
 
     public void SelectMap()
@@ -101,6 +110,7 @@ public class HomeUIController : MonoBehaviour
     public void CloseDetails()
     {
         showCharacterData.SetActive(false);
+        DisplayCharacterUI();
     }
 
     public void QuitGame()

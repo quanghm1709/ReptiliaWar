@@ -13,7 +13,7 @@ public class BuildTowerWeapBtn : MonoBehaviour
 
     public void Build(int index)
     {
-        if(GameManager.instance.GetMyCystal() >= TowerWeaponManager.instance.price[index])
+        if(GameManager.instance.GetMyCystal() >= TowerWeaponManager.instance.price[index] && tower.canBuild)
         {
             foreach (Transform child in buildPoint.transform)
             {
@@ -26,7 +26,7 @@ public class BuildTowerWeapBtn : MonoBehaviour
             newWeap.transform.localScale = new Vector3(2, 2, 2);
 
             GameManager.instance.Buying(TowerWeaponManager.instance.price[index], 0);
-            
+            tower.canBuild = false;
         }
         else {
             UIController.instance.ActiveMessage();
