@@ -30,12 +30,31 @@ public class TowerCore : Core
         currentHp -= damage;
         if(currentHp <= 0)
         {
-            Destroy(thisTower);
+            
             if (towerType == TowerType.HQ)
             {
-                UIController.instance.GameOverPanel.SetActive(true);
                 Time.timeScale = 0f;
-            }         
+                if (!isOwner)
+                {
+                    UIController.instance.winPanel.SetActive(true);
+                    WinReward reward = transform.GetComponent<WinReward>();
+                    if (reward.reward.Count > 0)
+                    {
+                        reward.Unlock();
+                    }
+                    if(MapSelect.instance.mapIndex == 2)
+                    {
+                        Demo1End.instance.SetEnd();
+                    }
+                }
+                else
+                {
+                    UIController.instance.GameOverPanel.SetActive(true);
+                }
+                GameManager.instance.RemoveNav();
+                
+            }
+            Destroy(thisTower);
         }
     }
     private void OnDrawGizmos()

@@ -35,7 +35,7 @@ public class LoadScene : MonoBehaviour
     {    
         if(HomeUIController.instace != null)
         {
-            if (HomeUIController.instace.isActiveMap[sceneToLoad])
+            if (MapSelect.instance.isActiveMap[sceneToLoad])
             {
                 HomeUIController.instace.loadScreen.SetActive(true);
                 startLoad = true;

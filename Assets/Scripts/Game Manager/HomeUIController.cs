@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,11 +14,12 @@ public class HomeUIController : MonoBehaviour
     [SerializeField] private Text[] showData;
     [SerializeField] private GameObject[] characterlistUI;
     [SerializeField] private GameObject[] unlockCharacter;
+    [SerializeField] private GameObject tileMapScreen;
 
     [Header("Select Map")]
+    [SerializeField] private Text mapText;
     [SerializeField] private GameObject mapScreen;
     [SerializeField] private GameObject[] map;
-    public bool[] isActiveMap;
 
     [Header("Load Screen")]
     public GameObject loadScreen;
@@ -26,6 +27,9 @@ public class HomeUIController : MonoBehaviour
 
     [Header("Setting")]
     [SerializeField] private GameObject settingScreen;
+
+    [Header("Demo End")]
+    public GameObject endScreen;
 
     private void Start()
     {
@@ -64,11 +68,17 @@ public class HomeUIController : MonoBehaviour
     {
         if (mapScreen.activeInHierarchy)
         {
+            characterShowAll.SetActive(true);
+            tileMapScreen.SetActive(true);
             mapScreen.SetActive(false);
+            mapText.text = "BẢN ĐỒ";
         }
         else
         {
             mapScreen.SetActive(true);
+            tileMapScreen.SetActive(false);
+            characterShowAll.SetActive(false);
+            mapText.text = "ĐỘI HÌNH";
         }
     }
 
@@ -98,9 +108,9 @@ public class HomeUIController : MonoBehaviour
 
     public void ActiveMap()
     {
-        for (int i = 0; i < isActiveMap.Length; i++)
+        for (int i = 0; i < MapSelect.instance.isActiveMap.Length; i++)
         {
-            if (isActiveMap[i])
+            if (MapSelect.instance.isActiveMap[i])
             {
                 map[i].SetActive(false);
             }
@@ -111,6 +121,14 @@ public class HomeUIController : MonoBehaviour
     {
         showCharacterData.SetActive(false);
         DisplayCharacterUI();
+    }
+
+    public void CloseEndScreen()
+    {
+        if (endScreen.activeInHierarchy)
+        {
+            endScreen.SetActive(false);
+        }     
     }
 
     public void QuitGame()

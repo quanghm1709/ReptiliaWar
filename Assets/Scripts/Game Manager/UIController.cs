@@ -16,8 +16,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text mes;
     [SerializeField] private Text pop;
 
-    [Header("Game Over Screen")]
+    [Header("Game End Screen")]
     public GameObject GameOverPanel;
+    public GameObject winPanel;
 
     [Header("Character UI")]
     [SerializeField] public List<Image> buyCD;
@@ -40,7 +41,7 @@ public class UIController : MonoBehaviour
 
     private int currentSlot;
     private float activeMes = 0;
-
+    private bool isUIactive = false;
     private void Awake()
     {
         instance = this;
@@ -70,7 +71,7 @@ public class UIController : MonoBehaviour
 
         pop.text = "Pop: " + currentSlot + "/" + GameManager.instance.GetPlayerSlot();
        
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !isUIactive)
         {
             BuildTowerUI();
         }
@@ -181,11 +182,13 @@ public class UIController : MonoBehaviour
         if (pauseScreen.activeInHierarchy)
         {
             pauseScreen.SetActive(false);
+            isUIactive = false;
             Time.timeScale = 1f;
         }
         else
         {
             pauseScreen.SetActive(true);
+            isUIactive = true;
             Time.timeScale = 0f;
         }
     }
@@ -203,7 +206,7 @@ public class UIController : MonoBehaviour
     }
 
     public void Home()
-    {
+    {       
         SceneManager.LoadScene("HomeScene");
     }
 }

@@ -21,7 +21,15 @@ public class CharacterMove : State
         }
         else
         {
-            _agent.movePos = tower.transform;
+            if(tower != null)
+            {
+                _agent.movePos = tower.transform;
+            }
+            else
+            {
+                _agent.ChangeState(CharacterState.Idle);
+                _agent.canMove = false;
+            }
         }
 
 

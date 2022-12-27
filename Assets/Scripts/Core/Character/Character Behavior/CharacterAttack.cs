@@ -17,6 +17,10 @@ public class CharacterAttack : State
             _agent.rb.velocity = Vector3.zero;
             _agent.navMeshAgent.speed = 0;
 
+            Vector3 lookDir = _agent.ClosetEnemy().position - _agent.transform.position;
+            float angle = Mathf.Atan2(lookDir.x, lookDir.z) * Mathf.Rad2Deg;
+            _agent.transform.rotation = Quaternion.Euler(0, angle, 0);
+
             if (_agent.timeBtwHitCD <= 0)
             {
                 _agent.anim.SetBool("IsAttack", true);

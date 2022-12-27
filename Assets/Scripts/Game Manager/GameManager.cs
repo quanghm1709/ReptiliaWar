@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using NavMeshBuilder = UnityEngine.AI.NavMeshBuilder;
 
 public class GameManager : MonoBehaviour
 {
@@ -17,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("Map Manager")]
     [SerializeField] private GameObject[] map;
 
+    [SerializeField] public NavMeshDataInstance navMeshData;
     private void Awake()
     {
         instance = this;
@@ -25,7 +28,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CheckCrystalTower();
-        Instantiate(map[MapSelect.instance.mapIndex]);     
+        Instantiate(map[MapSelect.instance.mapIndex]);    
     }
 
     private void Update()
@@ -117,4 +120,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RemoveNav()
+    {
+        NavMesh.RemoveNavMeshData(navMeshData);
+    }
 }
