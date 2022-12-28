@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         CheckCrystalTower();
-        Instantiate(map[MapSelect.instance.mapIndex]);    
+        Instantiate(map[MapSelect.instance.mapIndex]);
+        UpdateSlot();
     }
 
     private void Update()
@@ -123,5 +124,11 @@ public class GameManager : MonoBehaviour
     public void RemoveNav()
     {
         NavMesh.RemoveNavMeshData(navMeshData);
+    }
+
+    private void UpdateSlot()
+    {
+        playerAvailbleSlot += MapSelect.instance.mapIndex * 2;
+        enemyAvailbleSlot += MapSelect.instance.mapIndex * 2;
     }
 }

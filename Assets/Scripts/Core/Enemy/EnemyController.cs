@@ -9,26 +9,47 @@ public class EnemyController : MonoBehaviour
     [Header("Enemy Character List")]
     public List<CharacterUI> enemyCharacterList;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private float timeBtwWaveCD;
+    private float timeBtwWave;
+    private float waveTime;
     private float timeBtwBuy;
     private int currentSlot;
-
+    
     private void Start()
     {
         instance = this;
         timeBtwBuy = 0f;
-
+        waveTime = 1f;
     }
     
     private void Update()
     {
-        if(timeBtwBuy < 0)
+        if(waveTime > 0)
         {
-            Spawn();
+            waveTime -= Time.deltaTime;
+            if (timeBtwBuy < 0)
+            {
+                Spawn();
+            }
+            else
+            {
+                timeBtwBuy -= Time.deltaTime;
+            }
         }
         else
         {
-            timeBtwBuy -= Time.deltaTime;
+            if(timeBtwWave > 0)
+            {
+                timeBtwWave -= Time.deltaTime;
+            }
+            else
+            {
+                waveTime = Random.Range(1f, 4f);
+                timeBtwWave = Random.Range(4f, 9f);
+            }
         }
+
+        
 
         for (int i = 0; i < enemyCharacterList.Count; i++)
         {

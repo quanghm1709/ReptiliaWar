@@ -478,7 +478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Crocsoldier
   maxHp: 5
-  maxAtk: 100
+  maxAtk: 1
   isOwner: 1
   canMove: 1
   canAttack: 0

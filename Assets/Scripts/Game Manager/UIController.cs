@@ -48,6 +48,7 @@ public class UIController : MonoBehaviour
     }
     private void Start()
     {
+        Screen.orientation = ScreenOrientation.Landscape;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
         for(int i = 0; i < CharacterManager.instance.isActive.Length; i++)
         {

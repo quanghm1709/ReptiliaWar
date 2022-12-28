@@ -10,6 +10,7 @@ public class CharacterManager : MonoBehaviour
     public List<CharacterUI> playerCharacterList;
     public bool[] isActive;
 
+    
     private void Awake()
     {
         if(instance == null)
@@ -25,6 +26,7 @@ public class CharacterManager : MonoBehaviour
 
     private void Start()
     {
+        
     }
 
     private void Update()
@@ -54,5 +56,38 @@ public class CharacterManager : MonoBehaviour
     public void SetBuyCD(int i)
     {
         playerCharacterList[i].characterBuyTime = playerCharacterList[i].characterBuyCD;
+    }
+
+    public void Load()
+    {
+        if (SaveDemo.instance.HasKey("Character"))
+        {
+            List<int> data = new List<int>();
+            data = SaveDemo.instance.Load("Character");
+            for (int i = 0; i < data.Count; i++)
+            {
+                if (data[i] == 1)
+                {
+                    isActive[i] = true;
+                }
+            }
+        }
+       
+    }
+    public void Save()
+    {
+        List<int> data = new List<int>();
+        for(int i = 0; i < isActive.Length; i++)
+        {
+            if (isActive[i])
+            {
+                data.Add(1);
+            }
+            else
+            {
+                data.Add(0);
+            }
+        }
+        SaveDemo.instance.Save("Character", data);
     }
 }

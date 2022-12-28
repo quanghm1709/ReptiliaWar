@@ -28,19 +28,32 @@ public class HomeUIController : MonoBehaviour
     [Header("Setting")]
     [SerializeField] private GameObject settingScreen;
 
+    [SerializeField] private GameObject creditsScreen;
     [Header("Demo End")]
     public GameObject endScreen;
+    public GameObject startScreen;
 
     private void Start()
     {
         instace = this;
-        DisplayCharacterUI();
+        Screen.orientation = ScreenOrientation.Landscape;
+        if (SaveDemo.instance.isStartGame)
+        {
+            startScreen.SetActive(true);
+        }
+        else
+        {
+            startScreen.SetActive(false);
+        }
     }
 
     private void Update()
     {
         
         ActiveMap();
+        DisplayCharacterUI();
+
+        
     }
 
     public void ShowDetails(int index)
@@ -117,6 +130,18 @@ public class HomeUIController : MonoBehaviour
         }
     }
 
+    public void CreditsScreen()
+    {
+        if (creditsScreen.activeInHierarchy)
+        {
+            creditsScreen.SetActive(false);
+
+        }
+        else
+        {
+            creditsScreen.SetActive(true);
+        }
+    }
     public void CloseDetails()
     {
         showCharacterData.SetActive(false);
@@ -131,8 +156,18 @@ public class HomeUIController : MonoBehaviour
         }     
     }
 
+    public void StartScreen()
+    {
+        if (startScreen.activeInHierarchy)
+        {
+            SaveDemo.instance.isStartGame = false;
+            startScreen.SetActive(false);
+        }
+    }
     public void QuitGame()
     {
+        CharacterManager.instance.Save();
+        MapSelect.instance.Save();
         Application.Quit();
     }
 }

@@ -41,6 +41,8 @@ public class TowerCore : Core
                     if (reward.reward.Count > 0)
                     {
                         reward.Unlock();
+                        CharacterManager.instance.Save();
+                        MapSelect.instance.Save();
                     }
                     if(MapSelect.instance.mapIndex == 2)
                     {
