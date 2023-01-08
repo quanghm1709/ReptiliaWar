@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1941a25973bb5ab479b2af942625f5da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Crocsoldier
+  characterName: Lizardsoldier
   maxHp: 3
   maxAtk: 2
   isOwner: 1
