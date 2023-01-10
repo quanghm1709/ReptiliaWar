@@ -42,4 +42,9 @@ public class SaveDemo : MonoBehaviour
             return false;
         }
     }
+
+    public void ResetData()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

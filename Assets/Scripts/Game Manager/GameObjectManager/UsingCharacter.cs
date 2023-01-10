@@ -6,7 +6,7 @@ public class UsingCharacter : MonoBehaviour
 {
     public static UsingCharacter instance;
 
-    public List<CharacterCore> characterUseList;
+    public List<int> characterUseIndex;
     public List<CharacterUI> characterUseUIList;
 
     private void Start()
@@ -23,21 +23,28 @@ public class UsingCharacter : MonoBehaviour
     {
         for (int i = 0; i < characterUseUIList.Count; i++)
         {
-            if (characterUseUIList[i].characterBuyTime <= 0)
+            if (characterUseUIList[i]!=null)
             {
-                characterUseUIList[i].canBuy = true;
+                if(characterUseUIList[i].characterBuyTime <= 0)
+                {
+                    characterUseUIList[i].canBuy = true;
+                }
+                else
+                {
+                    characterUseUIList[i].canBuy = false;
+                    characterUseUIList[i].characterBuyTime -= Time.deltaTime;
+                }
             }
-            else
-            {
-                characterUseUIList[i].canBuy = false;
-                characterUseUIList[i].characterBuyTime -= Time.deltaTime;
-            }
+            
         }
         if (UIController.instance != null)
         {
             for (int i = 0; i < characterUseUIList.Count; i++)
             {
-                UIController.instance.buyCD[i].fillAmount = characterUseUIList[i].characterBuyTime / characterUseUIList[i].characterBuyCD;
+                if (characterUseUIList[i] != null)
+                {
+                    UIController.instance.buyCD[i].fillAmount = characterUseUIList[i].characterBuyTime / characterUseUIList[i].characterBuyCD;
+                }       
             }
         }
     }

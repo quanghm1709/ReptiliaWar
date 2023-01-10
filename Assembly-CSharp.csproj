@@ -82,6 +82,7 @@
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterDead.cs" />
     <Compile Include="Assets\Scripts\Core\Character\Character Behavior\CharacterGetDamage.cs" />
     <Compile Include="Assets\Scripts\Game Manager\MapSelect.cs" />
+    <Compile Include="Assets\Scripts\Game Manager\UI\ChangeCharacterIndexBtn.cs" />
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Game Manager\GameObjectManager\NavMeshActive.cs" />
     <Compile Include="Assets\Scripts\Game Manager\GameObjectManager\TowerWeaponManager.cs" />
@@ -92,7 +93,6 @@
     <Compile Include="Assets\Scripts\Core\Character\CharacterUI.cs" />
     <Compile Include="Assets\Scripts\Game Manager\DataManager\SaveDemo.cs" />
     <Compile Include="Assets\Scripts\Core\Character\RangeCharacter.cs" />
-    <Compile Include="Assets\Scripts\Game Manager\UI\ChangeCharacterIndexBtn.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

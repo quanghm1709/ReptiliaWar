@@ -111,13 +111,10 @@ public class HomeUIController : MonoBehaviour
 
     public void DisplayCharacterUI()
     {
-        for(int i = 0; i < CharacterManager.instance.isActive.Length; i++)
+        for(int i = 0; i < UsingCharacter.instance.characterUseUIList.Count; i++)
         {
-            if (CharacterManager.instance.isActive[i])
-            {
-                characterlistUI[i].SetActive(true);
-                unlockCharacter[i].SetActive(false);
-            }
+            characterlistUI[i].SetActive(true);
+            unlockCharacter[i].SetActive(false);
         }
     }
 
@@ -162,9 +159,15 @@ public class HomeUIController : MonoBehaviour
     {
         if (startScreen.activeInHierarchy)
         {
+            CharacterMeshUI.instance.SetupUI();
             SaveDemo.instance.isStartGame = false;
             startScreen.SetActive(false);
         }
+    }
+
+    public void ResetData()
+    {
+        SaveDemo.instance.ResetData();
     }
     public void QuitGame()
     {

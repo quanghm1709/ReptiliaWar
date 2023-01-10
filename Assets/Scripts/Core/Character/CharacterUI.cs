@@ -6,7 +6,8 @@ public class CharacterUI : MonoBehaviour
 {
     [Header("Character")]
     public GameObject character;
-    [SerializeField] public float characterBuyCD;
-    [SerializeField] public bool canBuy;
-    [SerializeField] public float characterBuyTime;
+    public float characterBuyCD;
+    public bool canBuy;
+    public float characterBuyTime;
+    public Sprite cardUI;
 }

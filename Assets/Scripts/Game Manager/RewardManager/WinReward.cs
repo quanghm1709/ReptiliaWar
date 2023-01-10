@@ -25,7 +25,8 @@ public class WinReward : MonoBehaviour
             }
             else
             {
-                CharacterManager.instance.isActive[r.unlockIndex] = true;
+                //CharacterManager.instance.isActive[r.unlockIndex] = true;
+                CharacterManager.instance.UnlockCharacter(r.unlockIndex);
             }
         }
         

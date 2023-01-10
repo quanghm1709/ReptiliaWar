@@ -11,7 +11,7 @@ public class CharacterMeshUI : MonoBehaviour
 
     [Header("Resource")]
     public MeshFilter[] meshList;
-    public MeshRenderer[] meshRender;
+    public Material[] meshRender;
     public Transform[] meshTransform;
     public bool[] onField;
     public GameObject[] changeBtnList;
@@ -45,12 +45,25 @@ public class CharacterMeshUI : MonoBehaviour
     public void SwapCharacter(int index)
     {
         t_meshList[targetIndex].sharedMesh = meshList[index].sharedMesh;
-        t_meshRender[targetIndex].material = meshRender[index].material;
-        t_meshTransform[targetIndex].position = new Vector3(t_meshTransform[targetIndex].position.x, meshTransform[index].position.y, t_meshTransform[targetIndex].position.z);
+        t_meshRender[targetIndex].material = meshRender[index];
+        //t_meshTransform[targetIndex].position = new Vector3(t_meshTransform[targetIndex].position.x, -70f, t_meshTransform[targetIndex].position.z);
         t_meshTransform[targetIndex].localScale =  new Vector3(meshTransform[index].localScale.x, meshTransform[index].localScale.y, meshTransform[index].localScale.z);
         t_meshTransform[targetIndex].localRotation = meshTransform[index].localRotation;
         onField[index] = true;
+
+        //UsingCharacter.instance.characterUseUIList.Remove(UsingCharacter.instance.characterUseUIList[targetIndex]);
+        UsingCharacter.instance.characterUseUIList[targetIndex] = CharacterManager.instance.playerCharacterList[index];
+        UsingCharacter.instance.characterUseIndex[targetIndex] = index;
         changeCharacterScreen.SetActive(false);
+    }
+
+    public void SetupUI()
+    {
+        for(int i = 0; i < UsingCharacter.instance.characterUseUIList.Count; i++)
+        {
+            targetIndex = i;
+            SwapCharacter(UsingCharacter.instance.characterUseIndex[i]);
+        }
     }
 
     public void ActiveBtn()

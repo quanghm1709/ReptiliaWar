@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     [Header("Character UI")]
     [SerializeField] public List<Image> buyCD;
     [SerializeField] private GameObject[] selectCharBtn;
+    [SerializeField] private Image[] characterBuyUI;
 
     [Header("Pause Screen")]
     [SerializeField] private GameObject pauseScreen;
@@ -50,13 +51,15 @@ public class UIController : MonoBehaviour
     {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         cam = GameObject.Find("Main Camera").GetComponent<Camera>();
-        for(int i = 0; i < CharacterManager.instance.isActive.Length; i++)
+        
+        for(int i = 0; i < UsingCharacter.instance.characterUseUIList.Count; i++)
         {
-            if (CharacterManager.instance.isActive[i])
-            {
+            //if(CharacterManager.instance.isActive[i])
                 selectCharBtn[i].SetActive(true);
-            }
+                characterBuyUI[i].sprite = UsingCharacter.instance.characterUseUIList[i].cardUI;
         }
+
+
     }
 
     private void Update()
@@ -81,11 +84,11 @@ public class UIController : MonoBehaviour
     public void SpawnCharacter(int index)
     {
         Transform spwanpoint = GameObject.Find("Tower").GetComponent<TowerCore>().spawnPoint;
-        int unitPrice = CharacterManager.instance.playerCharacterList[index].character.GetComponent<CharacterCore>().unitPrice;
+        int unitPrice = UsingCharacter.instance.characterUseUIList[index].character.GetComponent<CharacterCore>().unitPrice;
 
-        if(unitPrice <= GameManager.instance.GetMyCystal() && currentSlot < GameManager.instance.GetPlayerSlot() && CharacterManager.instance.playerCharacterList[index].canBuy)
+        if(unitPrice <= GameManager.instance.GetMyCystal() && currentSlot < GameManager.instance.GetPlayerSlot() && UsingCharacter.instance.characterUseUIList[index].canBuy)
         {
-            Instantiate(CharacterManager.instance.playerCharacterList[index].character, spwanpoint.position, spwanpoint.rotation);
+            Instantiate(UsingCharacter.instance.characterUseUIList[index].character, spwanpoint.position, spwanpoint.rotation);
             GameManager.instance.Buying(unitPrice, 0);
             UpdateCurrentSLot(1);
             UsingCharacter.instance.SetBuyCD(index);

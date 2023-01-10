@@ -37,7 +37,15 @@ public class CharacterManager : MonoBehaviour
 
     }
 
-    
+    public void UnlockCharacter(int index)
+    {
+        isActive[index] = true;
+        if (UsingCharacter.instance.characterUseUIList.Count < 3)
+        {
+            UsingCharacter.instance.characterUseUIList.Add(playerCharacterList[index]);
+            UsingCharacter.instance.characterUseIndex.Add(index);
+        }
+    }
 
     public void Load()
     {
